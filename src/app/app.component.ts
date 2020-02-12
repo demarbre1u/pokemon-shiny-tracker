@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { HuntService } from './service/hunt/hunt.service';
 
 export enum KEY_CODE {
   PLUS_SIGN_1 = 187,
@@ -15,32 +17,64 @@ export enum KEY_CODE {
 export class AppComponent {
   title = 'pokemon-shiny-tracker';
 
-  private counter = 0
+  huntForm = new FormGroup({
+    huntName: new FormControl()
+  })
+
+  private huntsList = []
+  private currentHunt: any = null
+
+  constructor(private hunt: HuntService)
+  {
+    this.hunt.huntsChanged$.subscribe(hunts => {
+      this.huntsList = hunts
+    })
+
+    this.hunt.currentHuntChanged$.subscribe(hunt => {
+      this.currentHunt = hunt
+    })
+  }
 
   // Listens to Keyboard events to increment / decrement counter if either the '+' or '-' keys are pressed
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
-
     if (event.keyCode === KEY_CODE.PLUS_SIGN_1 || event.keyCode === KEY_CODE.PLUS_SIGN_2) {
-      this.increment();
+      this.incrementCounter();
     }
 
     if (event.keyCode === KEY_CODE.MINUS_SIGN_1 || event.keyCode === KEY_CODE.MINUS_SIGN_2) {
-      this.decrement();
+      this.decrementCounter();
     }
   }
 
-  increment()
+  onSubmit()
   {
-    this.counter++
+    let huntName = this.huntForm.value.huntName
+
+    this.hunt.addHunt(huntName)
+
+    this.huntForm.reset()
   }
 
-  decrement()
-  {
-    this.counter--
+  setCurrentHunt(uid)
+  {    
+    this.hunt.setCurrentHunt(uid)
+  }
 
-    // Counter can't go below 0
-    this.counter = this.counter <= 0 ? 0 : this.counter
+  incrementCounter()
+  {
+    let currentId = this.currentHunt.id
+    this.hunt.incrementHuntCounter(currentId)
+  }
+
+  decrementCounter()
+  {
+    let currentId = this.currentHunt.id
+    this.hunt.decrementHuntCounter(currentId)
+  }
+
+  deleteHunt(uid)
+  {
+    this.hunt.deleteHunt(uid)
   }
 }

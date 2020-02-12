@@ -1,3 +1,24 @@
-<h1>{{ counter }}</h1>
-<button (click)="increment()">+</button>
-<button (click)="decrement()">-</button>
+<h4>Hunts list : </h4>
+<ul>
+  <li [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
+    {{ hunt.name }} 
+    <button (click)="deleteHunt(hunt.id)">Delete</button>
+  </li>
+</ul>
+
+
+<form [formGroup]="huntForm" (ngSubmit)="onSubmit()">
+  <label>
+    Hunt name:
+    <input type="text" formControlName="huntName" required>
+  </label>  
+
+  <button type="submit" [disabled]="!huntForm.valid">Submit</button>
+</form>
+
+
+<div *ngIf="currentHunt">
+  <h1>{{ currentHunt.counter }}</h1>
+  <button (click)="incrementCounter()">+</button>
+  <button (click)="decrementCounter()">-</button>  
+</div>
