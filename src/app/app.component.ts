@@ -24,6 +24,10 @@ export class AppComponent {
   private huntsList = []
   private currentHunt: any = null
 
+  private baseOdd = 4096
+  private rollNumber = 1
+  private shinyProbability = ''
+
   constructor(private hunt: HuntService)
   {
     this.hunt.huntsChanged$.subscribe(hunts => {
@@ -32,6 +36,8 @@ export class AppComponent {
 
     this.hunt.currentHuntChanged$.subscribe(hunt => {
       this.currentHunt = hunt
+
+      this.shinyProbability = this.calculateShinyProbability().toFixed(2)
     })
 
     this.hunt.loadHuntList()
@@ -47,6 +53,19 @@ export class AppComponent {
     if (event.keyCode === KEY_CODE.MINUS_SIGN_1 || event.keyCode === KEY_CODE.MINUS_SIGN_2) {
       this.decrementCounter();
     }
+  }
+
+  // Calculates the probability of encountering a shiny
+  calculateShinyProbability()
+  {
+    if(!this.currentHunt || this.currentHunt.counter === 0) 
+      return 0
+    
+    let p = this.rollNumber / this.baseOdd
+    let n = this.currentHunt.counter
+    let probability = 1 - Math.pow(1 - p, n)
+
+    return probability * 100
   }
 
   // Adds a new hunt to the hunts list
