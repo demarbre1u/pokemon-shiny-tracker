@@ -38,6 +38,12 @@ export class HuntService {
       id: uid,
       name: name, 
       counter: 0, 
+
+      options: {
+        masuda: false, 
+        chain: false, 
+        charm: false
+      }
     }
 
     this.huntsList.push(newHunt)
@@ -118,6 +124,45 @@ export class HuntService {
     this.huntsList.map(e => {
       if(e.id === uid)
         e.name = newName === '' ? e.name : newName
+    })
+
+    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
+
+    this.saveHuntList()
+    this.currentHuntChangedSource.next(this.currentHunt)
+  }
+
+  setHuntOptionMasuda(uid, value)
+  {
+    this.huntsList.map(e => {
+      if(e.id === uid)
+        e.options.masuda = value
+    })
+
+    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
+
+    this.saveHuntList()
+    this.currentHuntChangedSource.next(this.currentHunt)
+  }
+
+  setHuntOptionChain(uid, value)
+  {
+    this.huntsList.map(e => {
+      if(e.id === uid)
+        e.options.chain = value
+    })
+
+    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
+
+    this.saveHuntList()
+    this.currentHuntChangedSource.next(this.currentHunt)
+  }
+
+  setHuntOptionCharm(uid, value)
+  {
+    this.huntsList.map(e => {
+      if(e.id === uid)
+        e.options.charm = value
     })
 
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]

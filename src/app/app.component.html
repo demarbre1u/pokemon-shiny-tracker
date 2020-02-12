@@ -26,4 +26,8 @@
   <button (click)="decrementCounter()">-</button>  
 
   <h3>{{ shinyProbability }} %</h3>
+
+  <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOptionMasuda(checkboxMasuda.checked)" type="checkbox" name="masuda-method"> Masuda method <br>
+  <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOptionChain(checkboxChain.checked)" type="checkbox" name="chain-encouters"> Chain encounters <br>
+  <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOptionCharm(checkboxCharm.checked)" type="checkbox" name="shiny-charm"> Shiny Charm <br>
 </div>
