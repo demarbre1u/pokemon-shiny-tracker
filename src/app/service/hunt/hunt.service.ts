@@ -112,6 +112,20 @@ export class HuntService {
     this.currentHuntChangedSource.next(this.currentHunt)
   }
 
+  // Sets the name of the current hunt
+  setHuntName(uid, newName)
+  {
+    this.huntsList.map(e => {
+      if(e.id === uid)
+        e.name = newName === '' ? e.name : newName
+    })
+
+    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
+
+    this.saveHuntList()
+    this.currentHuntChangedSource.next(this.currentHunt)
+  }
+
   // Saves the hunt list into the browser's local storage
   saveHuntList()
   {

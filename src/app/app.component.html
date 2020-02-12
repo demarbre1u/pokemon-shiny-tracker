@@ -1,13 +1,13 @@
 <h4>Hunts list : </h4>
 <ul>
   <li [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
-    {{ hunt.name }} 
+    <input #huntName (change)="setHuntName(huntName, hunt.id, huntName.value)" type="text" name="" value="{{ hunt.name }}"> 
     <button (click)="deleteHunt(hunt.id)">Delete</button>
   </li>
 </ul>
 
 
-<form [formGroup]="huntForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="huntForm" (ngSubmit)="addHunt()">
   <label>
     Hunt name:
     <input type="text" formControlName="huntName" required>

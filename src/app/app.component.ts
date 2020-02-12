@@ -49,7 +49,8 @@ export class AppComponent {
     }
   }
 
-  onSubmit()
+  // Adds a new hunt to the hunts list
+  addHunt()
   {
     let huntName = this.huntForm.value.huntName
 
@@ -58,17 +59,27 @@ export class AppComponent {
     this.huntForm.reset()
   }
 
+  // Sets the current hunt selected by the player
   setCurrentHunt(uid)
   {    
     this.hunt.setCurrentHunt(uid)
   }
 
+  // Increments the counter of the current hunt
   incrementCounter()
   {
     let currentId = this.currentHunt.id
     this.hunt.incrementHuntCounter(currentId)
   }
 
+  // Decrements the counter of the current hunt
+  decrementCounter()
+  {
+    let currentId = this.currentHunt.id
+    this.hunt.decrementHuntCounter(currentId)
+  }
+
+  // Sets the counter of the current hunt to a given number
   setCounter(value)
   {
     let currentId = this.currentHunt.id
@@ -76,12 +87,16 @@ export class AppComponent {
     this.hunt.setHuntCounter(currentId, value)
   }
 
-  decrementCounter()
+  // Sets the name of the current hunt
+  setHuntName(element, uid, newName)
   {
-    let currentId = this.currentHunt.id
-    this.hunt.decrementHuntCounter(currentId)
+    if(newName === '')
+      element.value = this.currentHunt.name
+
+    this.hunt.setHuntName(uid, newName)
   }
 
+  // Deletes a hunt from the hunts list
   deleteHunt(uid)
   {
     this.hunt.deleteHunt(uid)
