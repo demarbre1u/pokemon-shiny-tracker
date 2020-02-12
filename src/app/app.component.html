@@ -19,7 +19,9 @@
 
 <div *ngIf="currentHunt">
   <h1>Current hunt : {{ currentHunt.name }}</h1>
-  <h2>{{ currentHunt.counter }}</h2>
+
+  <input #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
+
   <button (click)="incrementCounter()">+</button>
   <button (click)="decrementCounter()">-</button>  
 </div>

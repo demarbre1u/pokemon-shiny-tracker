@@ -69,6 +69,13 @@ export class AppComponent {
     this.hunt.incrementHuntCounter(currentId)
   }
 
+  setCounter(value)
+  {
+    let currentId = this.currentHunt.id
+
+    this.hunt.setHuntCounter(currentId, value)
+  }
+
   decrementCounter()
   {
     let currentId = this.currentHunt.id
