@@ -33,6 +33,8 @@ export class AppComponent {
     this.hunt.currentHuntChanged$.subscribe(hunt => {
       this.currentHunt = hunt
     })
+
+    this.hunt.loadHuntList()
   }
 
   // Listens to Keyboard events to increment / decrement counter if either the '+' or '-' keys are pressed

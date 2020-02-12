@@ -18,6 +18,12 @@ export class HuntService {
 
   constructor() { }
 
+  loadHuntList()
+  {
+    this.huntsList = this.getHuntList()
+    this.saveHuntList()
+  }
+
   // Adds a new hunt to the hunt list
   addHunt(name)
   {
@@ -36,7 +42,7 @@ export class HuntService {
 
     this.huntsList.push(newHunt)
 
-    this.huntsChangedSource.next(this.huntsList)
+    this.saveHuntList()
   }
 
   // Deletes a hunt from the hunt list
@@ -44,7 +50,7 @@ export class HuntService {
   {
     this.huntsList = this.huntsList.filter(e => e.id !== uid)
 
-    this.huntsChangedSource.next(this.huntsList)
+    this.saveHuntList()
 
     // If the deleted hunt is the current one, we set the current one to null to avoid any issue
     if(this.currentHunt['id'] === uid)
@@ -74,7 +80,7 @@ export class HuntService {
 
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
 
-    this.huntsChangedSource.next(this.huntsList)
+    this.saveHuntList()
     this.currentHuntChangedSource.next(this.currentHunt)
   }
 
@@ -88,7 +94,23 @@ export class HuntService {
 
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
 
-    this.huntsChangedSource.next(this.huntsList)
+    this.saveHuntList()
     this.currentHuntChangedSource.next(this.currentHunt)
+  }
+
+  // Saves the hunt list into the browser's local storage
+  saveHuntList()
+  {
+    localStorage.setItem('huntsList', JSON.stringify(this.huntsList))
+
+    this.huntsChangedSource.next(this.huntsList)
+  }
+
+  // Gets the hunt list from the  
+  getHuntList()
+  {
+    let huntList = JSON.parse(localStorage.getItem('huntsList'))
+
+    return huntList ? huntList : []
   }
 }

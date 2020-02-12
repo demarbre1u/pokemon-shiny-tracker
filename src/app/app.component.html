@@ -18,7 +18,8 @@
 
 
 <div *ngIf="currentHunt">
-  <h1>{{ currentHunt.counter }}</h1>
+  <h1>Current hunt : {{ currentHunt.name }}</h1>
+  <h2>{{ currentHunt.counter }}</h2>
   <button (click)="incrementCounter()">+</button>
   <button (click)="decrementCounter()">-</button>  
 </div>
