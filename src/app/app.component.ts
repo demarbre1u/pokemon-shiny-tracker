@@ -83,19 +83,19 @@ export class AppComponent {
     if(this.currentHunt.options.chain)
     {
       if(this.currentHunt.counter > 50)
-        rollNumbers += 1 
+        rollNumbers++
 
       if(this.currentHunt.counter > 100)
-        rollNumbers += 1 
+        rollNumbers++ 
 
       if(this.currentHunt.counter > 200)
-        rollNumbers += 1 
+        rollNumbers++ 
 
       if(this.currentHunt.counter > 300)
-        rollNumbers += 1 
+        rollNumbers++ 
 
       if(this.currentHunt.counter > 500)
-        rollNumbers += 1 
+        rollNumbers++ 
     }
 
     return rollNumbers
@@ -135,16 +135,19 @@ export class AppComponent {
   setCounter(value)
   {
     let currentId = this.currentHunt.id
-
     this.hunt.setHuntCounter(currentId, value)
   }
 
   // Sets the name of the current hunt
   setHuntName(element, uid, newName)
   {
+    // If the new name is empty, do nothing
     if(newName === '')
+    {
       element.value = this.currentHunt.name
-
+      return
+    }  
+    
     this.hunt.setHuntName(uid, newName)
   }
 
@@ -154,27 +157,10 @@ export class AppComponent {
     this.hunt.deleteHunt(uid)
   }
 
-  // Sets the value of the Masuda Method option on the current hunt
-  setOptionMasuda(value)
+  // Sets the value of the option corresponding to the given option code
+  setOption(value, code)
   {
     let currentId = this.currentHunt.id
-
-    this.hunt.setHuntOptionMasuda(currentId, value)
-  }
-
-  // Sets the value of the Chain Encouters option on the current hunt
-  setOptionChain(value)
-  {
-    let currentId = this.currentHunt.id
-
-    this.hunt.setHuntOptionChain(currentId, value)
-  }
-
-  // Sets the value of the Shiny Charm method on the current hunt
-  setOptionCharm(value)
-  {
-    let currentId = this.currentHunt.id
-
-    this.hunt.setHuntOptionCharm(currentId, value)
+    this.hunt.setHuntOption(currentId, value, code)
   }
 }

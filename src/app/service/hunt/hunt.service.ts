@@ -8,6 +8,12 @@ import * as uuid from 'uuid';
 })
 export class HuntService {
 
+  OPTION_CODE = {
+    MASUDA: 1, 
+    CHAIN: 2, 
+    CHARM: 3
+  }
+
   private huntsList = []
   private huntsChangedSource = new Subject<any>()
   huntsChanged$ = this.huntsChangedSource.asObservable()
@@ -132,37 +138,29 @@ export class HuntService {
     this.currentHuntChangedSource.next(this.currentHunt)
   }
 
-  setHuntOptionMasuda(uid, value)
+  // Sets the value of the option corresponding to the given option code
+  setHuntOption(uid, value, code)
   {
+    let option = ''
+    switch(code) 
+    {
+      case this.OPTION_CODE.MASUDA:
+        option = 'masuda'
+        break
+      case this.OPTION_CODE.CHAIN:
+        option = 'chain'
+        break
+      case this.OPTION_CODE.CHARM:
+        option = 'charm'
+        break
+      default: 
+        // If we get here, the option doesn't exist
+        return
+    }
+
     this.huntsList.map(e => {
       if(e.id === uid)
-        e.options.masuda = value
-    })
-
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
-
-    this.saveHuntList()
-    this.currentHuntChangedSource.next(this.currentHunt)
-  }
-
-  setHuntOptionChain(uid, value)
-  {
-    this.huntsList.map(e => {
-      if(e.id === uid)
-        e.options.chain = value
-    })
-
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
-
-    this.saveHuntList()
-    this.currentHuntChangedSource.next(this.currentHunt)
-  }
-
-  setHuntOptionCharm(uid, value)
-  {
-    this.huntsList.map(e => {
-      if(e.id === uid)
-        e.options.charm = value
+        e.options[option] = value
     })
 
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0]
