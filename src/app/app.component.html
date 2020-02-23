@@ -1,33 +1,45 @@
-<h4>Hunts list : </h4>
-<ul>
-  <li [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
-    <input #huntName (change)="setHuntName(huntName, hunt.id, huntName.value)" type="text" name="" value="{{ hunt.name }}"> 
-    <button (click)="deleteHunt(hunt.id)">Delete</button>
-  </li>
-</ul>
+<div class="app-wrapper">
 
+  <div class="sidebar">
+    <span class="sidebar__title">Hunts</span>
+    
+    <div class="sidebar__hunt-list">
+      <span class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
+        <input class="sidebar__hunt-name" #huntName (change)="setHuntName(huntName, hunt.id, huntName.value)" type="text" name="" value="{{ hunt.name }}" spellcheck="false"> 
+        <img class="sidebar__hunt-btn" (click)="deleteHunt(hunt.id)" src="../assets/icons/trash.svg" alt="">
+      </span>
+    </div>
+    
+    
+    <form class="sidebar__hunt-form" [formGroup]="huntForm" (ngSubmit)="addHunt()">
+        <input class="sidebar__form-input" placeholder="Hunt name" type="text" formControlName="huntName" required>  
+        <button class="sidebar__form-btn" type="submit" [disabled]="!huntForm.valid">Create</button>
+    </form>
+  </div>
 
-<form [formGroup]="huntForm" (ngSubmit)="addHunt()">
-  <label>
-    Hunt name:
-    <input type="text" formControlName="huntName" required>
-  </label>  
+ 
+  
+  <div class="hunt-panel-wrapper">
+    <div class="hunt-panel" *ngIf="currentHunt">
+      <h1 class="hunt-panel__title">Current hunt : {{ currentHunt.name }}</h1>
+    
+      <div class="hunt-panel__counter">
+        <input #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
+        <button (click)="incrementCounter()">+</button>
+        <button (click)="decrementCounter()">-</button>  
+      </div>
+      
+    
+      <h3 class="hunt-panel__probability">{{ shinyProbability }} %</h3>
+    
+      <div class="hunt-panel__options">
+        <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method
+        <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
+        <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny Charm
+      </div>
+      
+    </div>
+  </div>
+  
 
-  <button type="submit" [disabled]="!huntForm.valid">Submit</button>
-</form>
-
-
-<div *ngIf="currentHunt">
-  <h1>Current hunt : {{ currentHunt.name }}</h1>
-
-  <input #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
-
-  <button (click)="incrementCounter()">+</button>
-  <button (click)="decrementCounter()">-</button>  
-
-  <h3>{{ shinyProbability }} %</h3>
-
-  <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method <br>
-  <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters <br>
-  <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny Charm <br>
 </div>
