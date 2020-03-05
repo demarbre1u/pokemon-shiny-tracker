@@ -23,19 +23,30 @@
     <div class="hunt-panel" *ngIf="currentHunt">
       <h1 class="hunt-panel__title">Current hunt : {{ currentHunt.name }}</h1>
     
-      <div class="hunt-panel__counter">
-        <input #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
-        <button (click)="incrementCounter()">+</button>
-        <button (click)="decrementCounter()">-</button>  
+      <div class="hunt-panel__counter-wrapper">
+        <input class="hunt-panel__counter" #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
+        
+        <div class="hunt-panel__btns">
+          <button class="hunt-panel__btn" (click)="incrementCounter()">+</button>
+          <button class="hunt-panel__btn" (click)="decrementCounter()">-</button>  
+        </div>
       </div>
       
     
       <h3 class="hunt-panel__probability">{{ shinyProbability }} %</h3>
     
       <div class="hunt-panel__options">
-        <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method
-        <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
-        <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny Charm
+        <span class="hunt-panel__option">
+          <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method 
+        </span>
+
+        <span class="hunt-panel__option">
+          <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
+        </span>
+        
+        <span class="hunt-panel__option">
+          <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny charm
+        </span>
       </div>
       
     </div>

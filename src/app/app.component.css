@@ -52,6 +52,8 @@
 }
 
 .sidebar__hunt-btn {
+    cursor: pointer;
+    margin-left: 5px;
     width: 25px;
 }
 
@@ -108,4 +110,52 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.hunt-panel__title {
+    text-decoration: underline;
+}
+
+.hunt-panel__counter {
+    width: 200px;
+    text-align: center;
+    border: none;
+    border-bottom: 4px solid black;
+    outline: none;
+    background-color: transparent;
+    font-size: 40px;
+}
+
+.hunt-panel__btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hunt-panel__btn {
+    flex-grow: 2;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    outline: none;
+}
+
+.hunt-panel__btn:first-of-type {
+    border-right: 2px solid black;
+}
+
+.hunt-panel__btn:last-of-type {
+    border-left: 2px solid black;
+}
+
+.hunt-panel__options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hunt-panel__option {
+    padding: 5px;
 }
