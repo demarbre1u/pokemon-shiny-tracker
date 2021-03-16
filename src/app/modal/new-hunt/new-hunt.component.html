@@ -1,16 +1,45 @@
 <div class="modal-content">
+  <form [formGroup]="huntForm" (ngSubmit)="confirm()">
   
-  <div class="modal-header">
-    <h4>{{title || 'Confirm'}}</h4>
-  </div>
-  
-  <div class="modal-body">
-    Test
-  </div>
-  
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
-  </div>
-  
+    <div class="modal-header">
+      <h4>{{title || 'Confirm'}}</h4>
+    </div>
+    
+
+
+    <div class="modal-body">
+
+        <input type="text" name="huntName" value="" placeholder="Your hunt name" formControlName="huntName"/>
+
+        <select formControlName="huntGen">
+          <option value="1">Gen 5 or lower</option>
+          <option value="2">Gen 6 or higher</option>
+        </select>
+    
+        <select formControlName="huntMethod" (change)="methodChanged($event.target.value)">
+          <option value="1">Random Encouters</option>
+          <option value="2">Soft Resets</option>
+          <option value="3">Eggs</option>
+        </select>
+        
+        <label>
+          <input type="checkbox" name="Masuda method" id="masuda-method" formControlName="huntMasuda">
+          Masuda method
+        </label>
+    
+        <label>
+          <input type="checkbox" name="Shiny charm" id="shiny-charm" formControlName="huntShinyCharm">
+          Shiny charm
+        </label>
+      
+    </div>
+    
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!huntForm.valid">OK</button>
+    </div>
+
+  </form>
 </div>

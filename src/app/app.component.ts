@@ -103,18 +103,6 @@ export class AppComponent {
     return rollNumbers
   }
 
-  // Adds a new hunt to the hunts list
-  addHunt()
-  {
-    /*
-    let huntName = this.huntForm.value.huntName
-
-    this.hunt.addHunt(huntName)
-
-    this.huntForm.reset()
-    */
-  }
-
   // Sets the current hunt selected by the player
   setCurrentHunt(uid)
   {    
@@ -168,21 +156,14 @@ export class AppComponent {
     this.hunt.setHuntOption(currentId, value, code)
   }
 
-
-
-
-
   showNewHuntModal() {
     this.simpleModalService.addModal(NewHuntComponent, {
       title: 'New hunt',
     })
-    .subscribe((isConfirmed)=>{
-        if(isConfirmed) {
-          console.log('OK')
-        }
-        else {
-          console.log('NOT OK')
-        }
+    .subscribe((huntData) => {
+      if(huntData) {
+        this.hunt.addHunt(huntData)
+      }
     });
   }
 }

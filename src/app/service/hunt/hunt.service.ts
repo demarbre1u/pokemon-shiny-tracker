@@ -31,7 +31,7 @@ export class HuntService {
   }
 
   // Adds a new hunt to the hunt list
-  addHunt(name)
+  addHunt(huntData)
   {
     // While the generated ID is not truly unique, we genrate a new one
     let uid = uuid.v4()
@@ -42,13 +42,14 @@ export class HuntService {
 
     let newHunt = {
       id: uid,
-      name: name, 
+      name: huntData.huntName, 
       counter: 0, 
 
       options: {
-        masuda: false, 
+        masuda: huntData.huntMasuda, 
         chain: false, 
-        charm: false
+        charm: huntData.huntShinyCharm,
+        gen: huntData.huntGgen
       }
     }
 
