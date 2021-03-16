@@ -11,9 +11,8 @@
     </div>
     
     
-    <form class="sidebar__hunt-form" [formGroup]="huntForm" (ngSubmit)="addHunt()">
-        <input class="sidebar__form-input" placeholder="Hunt name" type="text" formControlName="huntName" required>  
-        <button class="sidebar__form-btn" type="submit" [disabled]="!huntForm.valid">Create</button>
+    <form class="sidebar__hunt-form" [formGroup]="huntForm">
+        <button class="sidebar__form-btn" type="submit" (click)="showNewHuntModal()">Create</button>
     </form>
   </div>
 

@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 import { HuntService } from './service/hunt/hunt.service';
 
 export enum KEY_CODE {
@@ -28,7 +30,7 @@ export class AppComponent {
   private rollNumber = 1
   private shinyProbability = ''
 
-  constructor(private hunt: HuntService)
+  constructor(private hunt: HuntService, private simpleModalService: SimpleModalService)
   {
     this.hunt.huntsChanged$.subscribe(hunts => {
       this.huntsList = hunts
@@ -104,11 +106,13 @@ export class AppComponent {
   // Adds a new hunt to the hunts list
   addHunt()
   {
+    /*
     let huntName = this.huntForm.value.huntName
 
     this.hunt.addHunt(huntName)
 
     this.huntForm.reset()
+    */
   }
 
   // Sets the current hunt selected by the player
@@ -162,5 +166,23 @@ export class AppComponent {
   {
     let currentId = this.currentHunt.id
     this.hunt.setHuntOption(currentId, value, code)
+  }
+
+
+
+
+
+  showNewHuntModal() {
+    this.simpleModalService.addModal(NewHuntComponent, {
+      title: 'New hunt',
+    })
+    .subscribe((isConfirmed)=>{
+        if(isConfirmed) {
+          console.log('OK')
+        }
+        else {
+          console.log('NOT OK')
+        }
+    });
   }
 }
