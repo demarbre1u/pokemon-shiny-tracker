@@ -11,18 +11,22 @@
 
         <input type="text" name="huntName" value="" placeholder="Your hunt name" formControlName="huntName"/>
 
-        <select formControlName="huntGen">
-          <option value="" selected disabled hidden>Generation</option>
-          <option value="1">Gen 5 or lower</option>
-          <option value="2">Gen 6 or higher</option>
-        </select>
-    
-        <select formControlName="huntMethod" (change)="methodChanged($event.target.value)">
-          <option value="" selected disabled hidden>Method</option>
-          <option value="1" selected="selected">Random Encouters</option>
-          <option value="2">Soft Resets</option>
-          <option value="3">Eggs</option>
-        </select>
+        <mat-form-field>
+          <mat-label>Generation</mat-label>
+          <mat-select name="huntGen" formControlName="huntGen">
+            <mat-option value="1">Gen 5 or lower</mat-option>
+            <mat-option value="2">Gen 6 or higher</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Hunt method</mat-label>
+          <mat-select name="huntMethod" formControlName="huntMethod" (selectionChange)="methodChanged($event.value)">
+            <mat-option value="1">Random Encouters</mat-option>
+            <mat-option value="2">Soft Resets</mat-option>
+            <mat-option value="3">Eggs</mat-option>
+          </mat-select>
+        </mat-form-field>
         
         <label>
           <input type="checkbox" name="Masuda method" id="masuda-method" formControlName="huntMasuda">
