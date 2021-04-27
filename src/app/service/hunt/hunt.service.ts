@@ -42,7 +42,7 @@ export class HuntService {
 
     let newHunt = {
       id: uid,
-      name: huntData.huntName, 
+      name: huntData.huntPokemon, 
       counter: 0, 
 
       options: {

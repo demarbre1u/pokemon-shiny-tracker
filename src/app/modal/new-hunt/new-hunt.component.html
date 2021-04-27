@@ -9,12 +9,16 @@
 
     <div class="modal-body">
 
-        <input type="text" name="huntName" value="" placeholder="Your hunt name" formControlName="huntName"/>
-
         <mat-form-field>
           <mat-label>Pokémon</mat-label>
-          <mat-select name="huntGen" formControlName="huntPokemon">
-            <mat-option value="1">Todo</mat-option>
+          <mat-select name="huntPokemon" formControlName="huntPokemon" #selectedPokemon>
+            <mat-select-trigger>
+              {{selectedPokemon.value}}
+            </mat-select-trigger>
+            <mat-option *ngFor="let pokemon of pokemonList" [value]="pokemon.name">
+              <img with="48" height="48" src="assets/sprites/{{pokemon.img}}.png">
+              {{pokemon.name}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 

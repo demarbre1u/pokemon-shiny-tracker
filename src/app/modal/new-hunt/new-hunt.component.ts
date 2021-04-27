@@ -17,7 +17,6 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
   title: string;
 
   huntForm = new FormGroup({
-    huntName: new FormControl('', Validators.required),
     huntPokemon: new FormControl('', Validators.required),
     huntGen: new FormControl('', Validators.required),
     huntMethod: new FormControl('', Validators.required),
