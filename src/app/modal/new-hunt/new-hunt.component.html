@@ -12,6 +12,13 @@
         <input type="text" name="huntName" value="" placeholder="Your hunt name" formControlName="huntName"/>
 
         <mat-form-field>
+          <mat-label>Pokémon</mat-label>
+          <mat-select name="huntGen" formControlName="huntPokemon">
+            <mat-option value="1">Todo</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
           <mat-label>Generation</mat-label>
           <mat-select name="huntGen" formControlName="huntGen">
             <mat-option value="1">Gen 5 or lower</mat-option>

@@ -1,0 +1,16 @@
+{
+    "list": [
+        {
+            "name": "Bulbazaur", 
+            "img": "bulbazaur"
+        }, 
+        {
+            "name": "Squirtle", 
+            "img": "squirtle"
+        },
+        {
+            "name": "Charmander", 
+            "img": "charmander"
+        }
+    ]
+}

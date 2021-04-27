@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SimpleModalComponent } from "ngx-simple-modal";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+import * as PokemonJson from '../../../assets/data/pokemon.json';
+
 export interface NewHuntModel {
   title:string;
 }
@@ -16,11 +18,14 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
 
   huntForm = new FormGroup({
     huntName: new FormControl('', Validators.required),
+    huntPokemon: new FormControl('', Validators.required),
     huntGen: new FormControl('', Validators.required),
     huntMethod: new FormControl('', Validators.required),
     huntMasuda: new FormControl({value: '', disabled: true}),
     huntShinyCharm: new FormControl('')
   })
+
+  pokemonList = PokemonJson['default'].list
   
   constructor() { super(); }
 
