@@ -21,7 +21,7 @@
               </ngx-mat-select-search>
             </mat-option>
             <mat-option *ngFor="let pokemon of filteredPokemonList | async" [value]="pokemon.name">
-              <img height="42" src="assets/sprites/regular/{{pokemon.img}}">
+              <img loading="lazy" height="42" src="assets/sprites/regular/{{pokemon.img}}">
               {{pokemon.name}}
             </mat-option>
           </mat-select>
