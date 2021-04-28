@@ -7,6 +7,7 @@ import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     ReactiveFormsModule, 
     SimpleModalModule, 
-    MatSelectModule
+    MatSelectModule, 
+    NgxMatSelectSearchModule
   ],
   providers: [],
   entryComponents: [

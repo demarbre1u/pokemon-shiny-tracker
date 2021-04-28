@@ -15,7 +15,12 @@
             <mat-select-trigger>
               {{selectedPokemon.value}}
             </mat-select-trigger>
-            <mat-option *ngFor="let pokemon of pokemonList" [value]="pokemon.name">
+            <mat-option>
+              <ngx-mat-select-search placeholderLabel="Search by name..." noEntriesFoundLabel="No Pokémon found" [formControl]="pokemonFilterControl">
+                <div ngxMatSelectSearchClear>X</div>
+              </ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let pokemon of filteredPokemonList | async" [value]="pokemon.name">
               <img with="48" height="48" src="assets/sprites/{{pokemon.img}}.png">
               {{pokemon.name}}
             </mat-option>
