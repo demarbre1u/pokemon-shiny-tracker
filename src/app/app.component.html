@@ -1,55 +1,59 @@
 <div class="app-wrapper">
 
-  <div class="sidebar">
-    <span class="sidebar__title">Hunts</span>
-    
-    <div class="sidebar__hunt-list">
-      <span class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
-        <input class="sidebar__hunt-name" #huntName (change)="setHuntName(huntName, hunt.id, huntName.value)" type="text" name="" value="{{ hunt.name }}" spellcheck="false"> 
-        <img class="sidebar__hunt-btn" (click)="deleteHunt(hunt.id)" src="../assets/icons/trash.svg" alt="">
-      </span>
-    </div>
-    
-    
-    <form class="sidebar__hunt-form" [formGroup]="huntForm">
-        <button class="sidebar__form-btn" type="submit" (click)="showNewHuntModal()">Create</button>
-    </form>
-  </div>
+  <mat-drawer-container [hasBackdrop]="true">
+    <mat-drawer class="sidebar" #drawer [mode]="'push'">
 
- 
-  
-  <div class="hunt-panel-wrapper">
-    <div class="hunt-panel" *ngIf="currentHunt">
-      <h1 class="hunt-panel__title">Current hunt : {{ currentHunt.name }}</h1>
-    
-      <div class="hunt-panel__counter-wrapper">
-        <input class="hunt-panel__counter" #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
+      <div class="sidebar__wrapper">
+        <span class="sidebar__title">Hunts</span>
+
+        <div class="sidebar__hunt-list">
+          <div class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
+            <div class="sidebar__hunt-name">{{ hunt.name }}</div> 
+            <img class="sidebar__hunt-btn" (click)="deleteHunt(hunt.id)" src="../assets/icons/trash.svg" alt="delete button">
+          </div>
+        </div>
         
-        <div class="hunt-panel__btns">
-          <button class="hunt-panel__btn" (click)="incrementCounter()">+</button>
-          <button class="hunt-panel__btn" (click)="decrementCounter()">-</button>  
+        <form class="sidebar__hunt-form" [formGroup]="huntForm">
+            <button class="sidebar__form-btn" type="submit" (click)="showNewHuntModal()">New hunt</button>
+        </form>
+      </div>
+      
+    </mat-drawer>
+    
+
+    <mat-drawer-content>
+      <div class="hunt-panel-wrapper">
+        <div class="hunt-panel" *ngIf="currentHunt">
+          <h1 class="hunt-panel__title">Current hunt : {{ currentHunt.name }}</h1>
+        
+          <div class="hunt-panel__counter-wrapper">
+            <input class="hunt-panel__counter" #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
+            
+            <div class="hunt-panel__btns">
+              <button class="hunt-panel__btn" (click)="incrementCounter()">+</button>
+              <button class="hunt-panel__btn" (click)="decrementCounter()">-</button>  
+            </div>
+          </div>
+        
+          <h3 class="hunt-panel__probability">{{ shinyProbability }} %</h3>
+        
+          <div class="hunt-panel__options">
+            <span class="hunt-panel__option">
+              <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method 
+            </span>
+    
+            <span class="hunt-panel__option">
+              <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
+            </span>
+            
+            <span class="hunt-panel__option">
+              <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny charm
+            </span>
+          </div>
         </div>
       </div>
-      
-    
-      <h3 class="hunt-panel__probability">{{ shinyProbability }} %</h3>
-    
-      <div class="hunt-panel__options">
-        <span class="hunt-panel__option">
-          <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method 
-        </span>
-
-        <span class="hunt-panel__option">
-          <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
-        </span>
-        
-        <span class="hunt-panel__option">
-          <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny charm
-        </span>
-      </div>
-      
-    </div>
-  </div>
-  
+      <button (click)="drawer.toggle()">Toggle drawer</button>
+    </mat-drawer-content>
+  </mat-drawer-container>
 
 </div>

@@ -130,19 +130,6 @@ export class AppComponent {
     this.hunt.setHuntCounter(currentId, value)
   }
 
-  // Sets the name of the current hunt
-  setHuntName(element, uid, newName)
-  {
-    // If the new name is empty, do nothing
-    if(newName === '')
-    {
-      element.value = this.currentHunt.name
-      return
-    }  
-    
-    this.hunt.setHuntName(uid, newName)
-  }
-
   // Deletes a hunt from the hunts list
   deleteHunt(uid)
   {

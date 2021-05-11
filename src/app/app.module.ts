@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 
-import {MatSelectModule} from '@angular/material/select';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     ReactiveFormsModule, 
     SimpleModalModule, 
     MatSelectModule, 
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule, 
+    MatSidenavModule
   ],
   providers: [],
   entryComponents: [
