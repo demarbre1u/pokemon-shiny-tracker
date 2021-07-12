@@ -1,7 +1,7 @@
 <div class="app-wrapper">
 
-  <mat-drawer-container [hasBackdrop]="true">
-    <mat-drawer class="sidebar" #drawer [mode]="'push'">
+  <mat-drawer-container [hasBackdrop]="false">
+    <mat-drawer class="sidebar" #drawer opened [mode]="'push'">
 
       <div class="sidebar__wrapper">
         <span class="sidebar__title">Hunts</span>
@@ -17,7 +17,6 @@
             <button class="sidebar__form-btn" type="submit" (click)="showNewHuntModal()">New hunt</button>
         </form>
       </div>
-      
     </mat-drawer>
     
 
@@ -52,7 +51,12 @@
           </div>
         </div>
       </div>
-      <button (click)="drawer.toggle()">Toggle drawer</button>
+
+      <button class="drawer-toggle-btn" (click)="drawer.toggle()">
+        <span *ngIf="drawer.opened"><</span>
+        <span *ngIf="!drawer.opened">></span>
+      </button>
+
     </mat-drawer-content>
   </mat-drawer-container>
 
