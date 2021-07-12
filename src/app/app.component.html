@@ -25,36 +25,38 @@
     
 
     <mat-drawer-content>
-      <div class="hunt-panel-wrapper">
-        <div class="hunt-panel" *ngIf="currentHunt">
-          <h1 class="hunt-panel__title">Current hunt : {{ currentHunt.name }}</h1>
-        
-          <div class="hunt-panel__counter-wrapper">
-            <input class="hunt-panel__counter" #counter (change)="setCounter(counter.value)" type="number" name="" id="" value="{{ currentHunt.counter }}">
-            
-            <div class="hunt-panel__btns">
-              <button class="hunt-panel__btn" (click)="incrementCounter()">+</button>
-              <button class="hunt-panel__btn" (click)="decrementCounter()">-</button>  
+
+      <div *ngIf="currentHunt" class="hunted-pokemon-wrapper">
+        <div class="hunted-pokemon">
+          <img src="assets/sprites/regular/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
+  
+          <div class="hunted-pokemon__info">
+            <span class="hunted-pokemon__info__name">
+              {{ currentHunt.name }}
+              
+              <span class="hunted-pokemon__info__img">
+                <img *ngIf="currentHunt.options.masuda" src="assets/icons/oval-charm.png" alt="Icon of an oval charm" class="hunted-pokemon__info__img__oval-charm">
+                <img *ngIf="currentHunt.options.charm" src="assets/icons/shiny-charm.png" alt="Icon of a shiny charm" class="hunted-pokemon__info__img__shiny-charm">
+              </span>
+            </span>
+  
+            <div class="hunted-pokemon__info__progress-bar">
+              <div class="hunted-pokemon__info__progress-bar__inner" [style.width.%]="shinyProbability"></div>
             </div>
-          </div>
-        
-          <h3 class="hunt-panel__probability">{{ shinyProbability }} %</h3>
-        
-          <div class="hunt-panel__options">
-            <span class="hunt-panel__option">
-              <input [checked]="currentHunt.options.masuda" #checkboxMasuda (change)="setOption(checkboxMasuda.checked, hunt.OPTION_CODE.MASUDA)" type="checkbox" name="masuda-method"> Masuda method 
-            </span>
-    
-            <span class="hunt-panel__option">
-              <input [checked]="currentHunt.options.chain" #checkboxChain (change)="setOption(checkboxChain.checked, hunt.OPTION_CODE.CHAIN)" type="checkbox" name="chain-encouters"> Chain encounters
-            </span>
-            
-            <span class="hunt-panel__option">
-              <input [checked]="currentHunt.options.charm" #checkboxCharm (change)="setOption(checkboxCharm.checked, hunt.OPTION_CODE.CHARM)" type="checkbox" name="shiny-charm"> Shiny charm
-            </span>
+  
+            {{ currentHunt.counter }} {{ currentHunt.method }}
           </div>
         </div>
+  
+        <div class="hunted-pokemon-buttons">
+          <button class="hunted-pokemon-buttons__btn" (click)="incrementCounter()">+</button>
+          <button class="hunted-pokemon-buttons__btn" (click)="decrementCounter()">-</button>  
+        </div>
       </div>
+
+      <h3 *ngIf="!currentHunt" class="hunted-pokemon-wrapper">
+        Create and select a hunt to start counting
+      </h3>
 
       <button class="drawer-toggle-btn" (click)="drawer.toggle()">
         <span *ngIf="drawer.opened"><</span>

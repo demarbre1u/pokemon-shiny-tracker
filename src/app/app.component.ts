@@ -136,13 +136,6 @@ export class AppComponent {
     this.hunt.deleteHunt(uid)
   }
 
-  // Sets the value of the option corresponding to the given option code
-  setOption(value, code)
-  {
-    let currentId = this.currentHunt.id
-    this.hunt.setHuntOption(currentId, value, code)
-  }
-
   showNewHuntModal() {
     this.simpleModalService.addModal(NewHuntComponent, {
       title: 'New hunt',

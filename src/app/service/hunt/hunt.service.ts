@@ -9,9 +9,15 @@ import * as uuid from 'uuid';
 export class HuntService {
 
   OPTION_CODE = {
-    MASUDA: 1, 
-    CHAIN: 2, 
-    CHARM: 3
+    MASUDA: 1,
+    CHARM: 2
+  }
+
+  METHOD_CODE = {
+    RANDOM_ENCOUNTER: 1, 
+    SOFT_RESET: 2,
+    EGGS: 3,
+    RUN_AWAY: 4
   }
 
   private huntsList = []
@@ -40,17 +46,35 @@ export class HuntService {
       uid = uuid.v4()
     }
 
+    console.log(huntData);
+
+    let method = ''
+    switch(Number.parseInt(huntData.huntMethod)) {
+      case this.METHOD_CODE.RANDOM_ENCOUNTER:
+        method = 'REs'
+        break;
+      case this.METHOD_CODE.SOFT_RESET:
+        method = 'SRs'
+        break;
+      case this.METHOD_CODE.EGGS:
+        method = 'Eggs'
+        break;
+      case this.METHOD_CODE.RUN_AWAY:
+        method = 'RAs'
+        break;
+    }
+
     let newHunt = {
       id: uid,
       name: huntData.huntPokemon, 
       img: huntData.huntPokemonImg,
+      method: method,
       counter: 0, 
 
       options: {
-        masuda: huntData.huntMasuda, 
-        chain: false, 
+        masuda: huntData.huntMasuda,
         charm: huntData.huntShinyCharm,
-        gen: huntData.huntGgen
+        gen: huntData.huntGen
       }
     }
 
@@ -148,9 +172,6 @@ export class HuntService {
     {
       case this.OPTION_CODE.MASUDA:
         option = 'masuda'
-        break
-      case this.OPTION_CODE.CHAIN:
-        option = 'chain'
         break
       case this.OPTION_CODE.CHARM:
         option = 'charm'
