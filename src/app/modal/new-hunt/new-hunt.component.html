@@ -5,10 +5,7 @@
       <h4>{{title || 'Confirm'}}</h4>
     </div>
     
-
-
     <div class="modal-body">
-
         <mat-form-field>
           <mat-label>Pokémon</mat-label>
           <mat-select name="huntPokemon" formControlName="huntPokemon" #selectedPokemon>
@@ -41,26 +38,18 @@
             <mat-option value="1">Random Encouters</mat-option>
             <mat-option value="2">Soft Resets</mat-option>
             <mat-option value="3">Eggs</mat-option>
+            <mat-option value="4">Run Aways</mat-option>
           </mat-select>
         </mat-form-field>
         
-        <label>
-          <input type="checkbox" name="Masuda method" id="masuda-method" formControlName="huntMasuda">
-          Masuda method
-        </label>
-    
-        <label>
-          <input type="checkbox" name="Shiny charm" id="shiny-charm" formControlName="huntShinyCharm">
-          Shiny charm
-        </label>
+        <mat-checkbox id="masuda-method" formControlName="huntMasuda" color="primary">Masuda Method</mat-checkbox>
+        <mat-checkbox id="shiny-charm" formControlName="huntShinyCharm" color="primary">Shiny Charm</mat-checkbox>
       
     </div>
-    
-
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
-      <button type="submit" class="btn btn-primary" [disabled]="!huntForm.valid">OK</button>
+      <button type="button" class="btn btn-outline-danger modal-footer__cancel-btn" (click)="close()" >Cancel</button>
+      <button type="submit" class="btn btn-primary modal-footer__ok-btn" [disabled]="!huntForm.valid">OK</button>
     </div>
 
   </form>

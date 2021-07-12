@@ -2,3 +2,58 @@
     display: flex !important;
     align-items: center !important;
 }
+
+.modal-content {
+    transform: translateY(50%);
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-footer {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+}
+
+.modal-footer__ok-btn, 
+.modal-footer__cancel-btn {
+    outline: none;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-footer__cancel-btn {
+    background-color: #FFFFFF;
+    color: black;
+    border: 1px solid #333;
+
+    width: 100px;
+}
+
+.modal-footer__ok-btn {
+    background-color: #333;
+    color: white;
+
+    width: 80px;
+}
+
+.modal-footer__ok-btn[disabled] {
+    background-color: #888;
+    color: #ccc;
+    cursor: unset;
+}

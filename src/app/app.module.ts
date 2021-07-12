@@ -6,6 +6,7 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
@@ -22,7 +23,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     SimpleModalModule, 
     MatSelectModule, 
     NgxMatSelectSearchModule, 
-    MatSidenavModule
+    MatSidenavModule,
+    MatCheckboxModule
   ],
   providers: [],
   entryComponents: [
