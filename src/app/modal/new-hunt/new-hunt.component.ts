@@ -73,6 +73,10 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
   
   confirm() {
     this.result = this.huntForm.value;
+   
+    const chosenPokemon = (this.pokemonList.filter(pokemon => pokemon.name === this.huntForm.value.huntPokemon))[0];
+    this.result['huntPokemonImg'] = chosenPokemon.img; 
+
     this.close();
   }
 }

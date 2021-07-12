@@ -8,7 +8,11 @@
 
         <div class="sidebar__hunt-list">
           <div class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
-            <div class="sidebar__hunt-name">{{ hunt.name }}</div> 
+            <span class="sidebar__hunt-pokemon">
+              <img class="sidebar__hunt-img" src="assets/sprites/regular/{{ hunt.img }}" alt="Icon of a {{ hunt.name }}">
+              <div class="sidebar__hunt-name">{{ hunt.name }}</div> 
+            </span>
+
             <img class="sidebar__hunt-btn" (click)="deleteHunt(hunt.id)" src="../assets/icons/trash.svg" alt="delete button">
           </div>
         </div>

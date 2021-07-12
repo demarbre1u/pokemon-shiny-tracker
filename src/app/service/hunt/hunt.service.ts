@@ -43,6 +43,7 @@ export class HuntService {
     let newHunt = {
       id: uid,
       name: huntData.huntPokemon, 
+      img: huntData.huntPokemonImg,
       counter: 0, 
 
       options: {
