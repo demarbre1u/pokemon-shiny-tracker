@@ -99,6 +99,13 @@ export class HuntService {
     this.currentHuntChangedSource.next(this.currentHunt);
   }
 
+  updateCurrentHunt(uid) {
+    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
+
+    this.saveHuntList();
+    this.currentHuntChangedSource.next(this.currentHunt);
+  }
+
   // Increments the counter of the current hunt
   incrementHuntCounter(uid) {
     this.huntsList.map(e => {
@@ -107,10 +114,7 @@ export class HuntService {
       }
     });
 
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
-
-    this.saveHuntList();
-    this.currentHuntChangedSource.next(this.currentHunt);
+    this.updateCurrentHunt(uid);
   }
 
   // Decrements the counter of the current hunt
@@ -121,10 +125,7 @@ export class HuntService {
       }
     });
 
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
-
-    this.saveHuntList();
-    this.currentHuntChangedSource.next(this.currentHunt);
+    this.updateCurrentHunt(uid);
   }
 
   // Sets the counter of the current hunt to a given value
@@ -135,10 +136,7 @@ export class HuntService {
       }
     });
 
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
-
-    this.saveHuntList();
-    this.currentHuntChangedSource.next(this.currentHunt);
+    this.updateCurrentHunt(uid);
   }
 
   // Sets the value of the option corresponding to the given option code
@@ -162,10 +160,7 @@ export class HuntService {
       }
     });
 
-    this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
-
-    this.saveHuntList();
-    this.currentHuntChangedSource.next(this.currentHunt);
+    this.updateCurrentHunt(uid);
   }
 
   // Saves the hunt list into the browser's local storage
