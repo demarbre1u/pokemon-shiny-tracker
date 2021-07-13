@@ -20,7 +20,9 @@ It keeps track of :
 
 Additionnaly, it can work out the probability to have found 1 shiny based on the previous data.
 
-This app was made using Angular 7. 
+This app was made using Angular 7, and Cordova. It can be ran used on a browser and on an Android phone. 
+
+The APK a the app is available [here](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/pokemon-shiny-tracker.apk).
 
 ## How to install & run
 
@@ -46,6 +48,27 @@ ng serve -o
 
 Finally, navigate to `http://localhost:4200/`.
 
-## Build
+## How to build & run the app
+
+To build the app : 
+
+```bash
+npm install
+ng build --prod --aot
+cordova platform add android
+cordova build android
+```
+
+To run the app (on an emulator) :
+
+```bash
+cordova run android
+```
+
+To run the app (on a plugged device) :
+
+```bash
+cordova run android --device
+```
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
