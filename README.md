@@ -70,5 +70,3 @@ To run the app (on a plugged device) :
 ```bash
 cordova run android --device
 ```
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
