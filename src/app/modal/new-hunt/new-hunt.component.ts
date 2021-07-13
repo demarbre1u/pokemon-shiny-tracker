@@ -24,11 +24,11 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     huntMasuda: new FormControl({value: '', disabled: true}),
     huntShinyCharm: new FormControl(''),
     huntCounter: new FormControl('')
-  })
+  });
 
   pokemonFilterControl: FormControl = new FormControl();
 
-  pokemonList = PokemonJson['default'].list
+  pokemonList = PokemonJson['default'].list;
   filteredPokemonList: ReplaySubject<any> = new ReplaySubject<any>(1);
 
   constructor() { super(); }
@@ -51,10 +51,10 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     let search = this.pokemonFilterControl.value;
     if (!search) {
       this.filteredPokemonList.next(this.pokemonList.slice());
-        return;
-      } else {
-        search = search.toLowerCase();
-      }
+      return;
+    } else {
+      search = search.toLowerCase();
+    }
 
     // Filter the pokémon list
     this.filteredPokemonList.next(
@@ -63,12 +63,12 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
   }
 
   methodChanged($event) {
-    let masudaCheckbox = this.huntForm.get('huntMasuda')
+    let masudaCheckbox = this.huntForm.get('huntMasuda');
         
     if($event == 3) {
-      masudaCheckbox.enable()
+      masudaCheckbox.enable();
     } else {
-      masudaCheckbox.disable()
+      masudaCheckbox.disable();
     }
   }
   
