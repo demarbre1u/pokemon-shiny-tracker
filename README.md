@@ -1,27 +1,51 @@
-# PokemonShinyTracker
+# ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true) Pokemon Shiny Tracker ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+## Introduction
 
-## Development server
+<p align="center">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_01.png?raw=true" width="200" title="Screen 1" alt="Screen 1">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_02.png?raw=true" width="200" title="Screen 2" alt="Screen 2">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_03.png?raw=true" width="200" title="Screen 3" alt="Screen 3">
+</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true" width="16" title="Shiny charm icon" alt="Shiny charm icon">`Pokémon Shiny Tracker` project is a webapp meant to track the number of encouters you did while shiny hunting.
 
-## Code scaffolding
+It keeps track of :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ - the hunted Pokémon, 
+ - the number of encouters, 
+ - the method used, 
+ - the generation selected, 
+ - some additionnal options (Masuda, shiny charm).
+
+Additionnaly, it can work out the probability to have found 1 shiny based on the previous data.
+
+This app was made using Angular 7. 
+
+## How to install & run
+
+To install the project :
+
+```bash 
+git clone git@github.com:demarbre1u/pokemon-shiny-tracker.git
+cd pokemon-shiny-tracker/
+npm install
+```
+
+Then to run the project :
+
+```bash
+ng serve
+```
+
+Or, to open the app directly in your browser : 
+
+```bash
+ng serve -o
+```
+
+Finally, navigate to `http://localhost:4200/`.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
