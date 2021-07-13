@@ -81,25 +81,6 @@ export class AppComponent {
     if(this.currentHunt.options.charm)
       rollNumbers += 2
 
-    // Depending on the chain number, we add more rolls
-    if(this.currentHunt.options.chain)
-    {
-      if(this.currentHunt.counter > 50)
-        rollNumbers++
-
-      if(this.currentHunt.counter > 100)
-        rollNumbers++ 
-
-      if(this.currentHunt.counter > 200)
-        rollNumbers++ 
-
-      if(this.currentHunt.counter > 300)
-        rollNumbers++ 
-
-      if(this.currentHunt.counter > 500)
-        rollNumbers++ 
-    }
-
     return rollNumbers
   }
 
