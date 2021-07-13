@@ -1,4 +1,4 @@
-# ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true) Pokemon Shiny Tracker ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true)
+# ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true) Pokémon Shiny Tracker ![Shiny charm icon](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true)
 
 ## Introduction
 
