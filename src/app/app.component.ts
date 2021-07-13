@@ -21,16 +21,16 @@ export class AppComponent {
   title = 'pokemon-shiny-tracker';
 
   // The list of hunts of the user
-  private huntsList = [];
+  huntsList = [];
   // The current hunt selected by the user
-  private currentHunt: any = null;
+  currentHunt: any = null;
 
+  // The probability to have found one shiny
+  shinyProbability = '';
   // The base odd to find a shiny
   private baseOdd = 0;
   // The number of roll per encounter
   private rollNumber = 1;
-  // The probability to have found one shiny
-  private shinyProbability = '';
 
   constructor(private hunt: HuntService, private simpleModalService: SimpleModalService) {
     // Updates the list of hunts whenever it is updated
