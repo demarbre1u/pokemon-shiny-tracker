@@ -15,8 +15,10 @@ export interface NewHuntModel {
   styleUrls: ['./new-hunt.component.css']
 })
 export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean> implements NewHuntModel, OnInit {
+  // The title displayed in the modal
   title: string;
 
+  // Form configs
   huntForm = new FormGroup({
     huntPokemon: new FormControl('', Validators.required),
     huntGen: new FormControl('', Validators.required),
@@ -26,9 +28,12 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     huntCounter: new FormControl('')
   });
 
+  // FormControl of the Pokémon select
   pokemonFilterControl: FormControl = new FormControl();
 
+  // List of every Pokémon available
   pokemonList = PokemonJson['default'].list;
+  // Observable containing a filtered list of Pokémon
   filteredPokemonList: ReplaySubject<any> = new ReplaySubject<any>(1);
 
   constructor() { super(); }
@@ -36,12 +41,14 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
   ngOnInit() {
     this.filteredPokemonList.next(this.pokemonList.slice());
 
+    // Whenever the user types a keyword in the Pokémon select filter, a new list containing the filtered Pokémon is built
     this.pokemonFilterControl.valueChanges
     .subscribe(() => {
       this.filterPokemonList();
     });
   }
 
+  // Builds a new list of Pokémon depending on the keyword the user typed
   private filterPokemonList() {
     if (!this.pokemonList) {
       return;
@@ -62,9 +69,11 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     );
   }
 
+  // When the hunt method is changed, enable / disable some options
   methodChanged($event) {
     let masudaCheckbox = this.huntForm.get('huntMasuda');
         
+    // Masuda method can't be used if the hunt isn't breeding
     if($event == 3) {
       masudaCheckbox.enable();
     } else {
@@ -72,9 +81,11 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     }
   }
   
+  // When the user clicks on the 'OK' button of the modal
   confirm() {
     this.result = this.huntForm.value;
    
+    // We add the image of the chosen Pokémon to the hunt data
     const chosenPokemon = (this.pokemonList.filter(pokemon => pokemon.name === this.huntForm.value.huntPokemon))[0];
     this.result['huntPokemonImg'] = chosenPokemon.img; 
 

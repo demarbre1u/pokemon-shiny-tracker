@@ -1,34 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-
 import * as uuid from 'uuid';
+
+// List of options available for a hunt
+export enum OPTION_CODE {
+  MASUDA =  1,
+  CHARM = 2
+};
+
+// List of methods available for a hunt
+export enum METHOD_CODE {
+  RANDOM_ENCOUNTER = 1, 
+  SOFT_RESET = 2,
+  EGGS = 3,
+  RUN_AWAY = 4
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class HuntService {
-  OPTION_CODE = {
-    MASUDA: 1,
-    CHARM: 2
-  };
-
-  METHOD_CODE = {
-    RANDOM_ENCOUNTER: 1, 
-    SOFT_RESET: 2,
-    EGGS: 3,
-    RUN_AWAY: 4
-  };
-
+  // List of hunts created by the user
   private huntsList = [];
+  // Subject / Observer to notify the components of the app when list of hunts has changed
   private huntsChangedSource = new Subject<any>();
   huntsChanged$ = this.huntsChangedSource.asObservable();
 
+  // The current list selected by the user
   private currentHunt = {};
+  // Subject / Observer to notify the components of the app when the current hunt has changed
   private currentHuntChangedSource = new Subject<any>();
   currentHuntChanged$ = this.currentHuntChangedSource.asObservable();
 
   constructor() {}
 
+  // Loads the list of hunts
   loadHuntList() {
     this.huntsList = this.getHuntList();
     this.saveHuntList();
@@ -42,22 +48,24 @@ export class HuntService {
       uid = uuid.v4();
     }
 
+    // Sets the text that will be displayed besides the counter
     let method = '';
     switch(Number.parseInt(huntData.huntMethod)) {
-      case this.METHOD_CODE.RANDOM_ENCOUNTER:
+      case METHOD_CODE.RANDOM_ENCOUNTER:
         method = 'REs';
         break;
-      case this.METHOD_CODE.SOFT_RESET:
+      case METHOD_CODE.SOFT_RESET:
         method = 'SRs';
         break;
-      case this.METHOD_CODE.EGGS:
+      case METHOD_CODE.EGGS:
         method = 'Eggs';
         break;
-      case this.METHOD_CODE.RUN_AWAY:
+      case METHOD_CODE.RUN_AWAY:
         method = 'RAs';
         break;
     }
 
+    // Sets the starting value of the counter
     const counter = huntData.huntCounter ? Number.parseInt(huntData.huntCounter) : 0;
 
     const newHunt = {
@@ -74,8 +82,8 @@ export class HuntService {
       }
     };
 
+    // Adds the new hunt to the list of hunts
     this.huntsList.push(newHunt);
-
     this.saveHuntList()
   }
 
@@ -99,6 +107,7 @@ export class HuntService {
     this.currentHuntChangedSource.next(this.currentHunt);
   }
 
+  // Change the current hunt when its data has been updated
   updateCurrentHunt(uid) {
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
 
@@ -121,6 +130,7 @@ export class HuntService {
   decrementHuntCounter(uid) {
     this.huntsList.map(e => {
       if(e.id === uid) {
+        // The counter can't go bellow 0
         e.counter = e.counter === 0 ? 0 : e.counter - 1;
       }
     });
@@ -139,37 +149,13 @@ export class HuntService {
     this.updateCurrentHunt(uid);
   }
 
-  // Sets the value of the option corresponding to the given option code
-  setHuntOption(uid, value, code) {
-    let option = '';
-    switch(code) {
-      case this.OPTION_CODE.MASUDA:
-        option = 'masuda';
-        break;
-      case this.OPTION_CODE.CHARM:
-        option = 'charm';
-        break;
-      default: 
-        // If we get here, the option doesn't exist
-        return;
-    }
-
-    this.huntsList.map(e => {
-      if(e.id === uid) {
-        e.options[option] = value;
-      }
-    });
-
-    this.updateCurrentHunt(uid);
-  }
-
   // Saves the hunt list into the browser's local storage
   saveHuntList() {
     localStorage.setItem('huntsList', JSON.stringify(this.huntsList));
     this.huntsChangedSource.next(this.huntsList);
   }
 
-  // Gets the hunt list from the  
+  // Gets the hunt list from the browser's local storage
   getHuntList() {
     const huntList = JSON.parse(localStorage.getItem('huntsList'));
 
