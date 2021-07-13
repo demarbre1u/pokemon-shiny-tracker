@@ -4,7 +4,7 @@
 }
 
 .modal-content {
-    transform: translateY(50%);
+    transform: translateY(25%);
     border-radius: 10px;
 }
 

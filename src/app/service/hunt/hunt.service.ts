@@ -39,14 +39,14 @@ export class HuntService {
   // Adds a new hunt to the hunt list
   addHunt(huntData)
   {
+    console.log(huntData)
+
     // While the generated ID is not truly unique, we genrate a new one
     let uid = uuid.v4()
     while(this.huntsList.filter(e => e.id === uid).length)
     {
       uid = uuid.v4()
     }
-
-    console.log(huntData);
 
     let method = ''
     switch(Number.parseInt(huntData.huntMethod)) {
@@ -64,12 +64,15 @@ export class HuntService {
         break;
     }
 
+    let counter = huntData.huntCounter ? Number.parseInt(huntData.huntCounter) : 0
+
+
     let newHunt = {
       id: uid,
       name: huntData.huntPokemon, 
       img: huntData.huntPokemonImg,
       method: method,
-      counter: 0, 
+      counter: counter, 
 
       options: {
         masuda: huntData.huntMasuda,

@@ -41,6 +41,11 @@
             <mat-option value="4">Run Aways</mat-option>
           </mat-select>
         </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Counter</mat-label>
+          <input matInput name="huntCounter" formControlName="huntCounter" maxlength="10" placeholder="0" value="0">
+        </mat-form-field>
         
         <mat-checkbox id="masuda-method" formControlName="huntMasuda" color="primary">Masuda Method</mat-checkbox>
         <mat-checkbox id="shiny-charm" formControlName="huntShinyCharm" color="primary">Shiny Charm</mat-checkbox>
