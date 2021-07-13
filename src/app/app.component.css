@@ -42,6 +42,10 @@ mat-drawer-content {
 }
 
 .sidebar__title {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+
     height: 50px;
     color: #FDFDFD;
     font-size: 30px;
@@ -50,8 +54,20 @@ mat-drawer-content {
     clip-path: polygon(0% 0%, 100% 0%, 100% 66%, 0% 100%)
 }
 
+.sidebar__hunt-list {
+    padding: 90px 0px 120px 0px;
+    height: 100vh;
+    width: 100%;
+    overflow-y: auto;
+
+    margin: auto;
+}
+
 .sidebar__hunt-form {
+    position: absolute;
+    bottom: 0;
     height: 80px;
+    z-index: 999;
 
     display: grid;
     place-items: center;
@@ -63,7 +79,7 @@ mat-drawer-content {
     background-color: #FFFFFF;
     width: 220px;
     height: 50px;
-    margin: 15px 0;
+    margin: 15px auto;
     cursor: pointer;
 
     display: flex;
