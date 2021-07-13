@@ -39,8 +39,6 @@ export class HuntService {
   // Adds a new hunt to the hunt list
   addHunt(huntData)
   {
-    console.log(huntData)
-
     // While the generated ID is not truly unique, we genrate a new one
     let uid = uuid.v4()
     while(this.huntsList.filter(e => e.id === uid).length)

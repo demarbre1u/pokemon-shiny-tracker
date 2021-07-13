@@ -26,7 +26,7 @@ export class AppComponent {
   private huntsList = []
   private currentHunt: any = null
 
-  private baseOdd = 4096
+  private baseOdd = 0
   private rollNumber = 1
   private shinyProbability = ''
 
@@ -39,6 +39,11 @@ export class AppComponent {
     this.hunt.currentHuntChanged$.subscribe(hunt => {
       this.currentHunt = hunt
 
+      if(! hunt) {
+        return;
+      }
+
+      this.baseOdd = this.getBaseOdds(hunt.options.gen);
       this.shinyProbability = this.calculateShinyProbability().toFixed(2)
     })
 
@@ -68,6 +73,24 @@ export class AppComponent {
     let probability = 1 - Math.pow(1 - p, n)
 
     return probability * 100
+  }
+
+  getBaseOdds(generation) 
+  {
+    let baseOdd = 0;
+    switch(generation) {
+      case '1':
+        baseOdd = 8192;
+        break;
+      case '2':
+        baseOdd = 4096;
+        break;
+      default:
+        baseOdd = 8192;
+        break;
+    }
+
+    return baseOdd;
   }
 
   // Returns the number of shiny rolls
