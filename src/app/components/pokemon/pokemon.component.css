@@ -1,0 +1,95 @@
+.hunted-pokemon-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.hunted-pokemon {
+    width: 275px;
+
+    border-radius: 40px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+    box-shadow: 0px 2px 5px #333;
+}
+
+.hunted-pokemon__img {
+    position: relative;
+    left: 2px;
+    bottom: 12px;
+    width: calc(68px * 1.2);
+    height: calc(56px * 1.2);
+}
+
+.hunted-pokemon__info__img__oval-charm, 
+.hunted-pokemon__info__img__shiny-charm {
+    width: 20px;
+    height: 20px;
+}
+
+.hunted-pokemon__info {
+    margin: 0 30px 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hunted-pokemon__info__name {
+    font-size: 18px;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.hunted-pokemon__info__progress-bar {
+    width: 165px;
+    height: 6px;
+
+    margin: 4px 0px;
+    background-color: #ccc;
+}
+
+.hunted-pokemon__info__progress-bar__inner {
+    height: 6px;
+
+    background-color: #43C844;
+}
+
+.hunted-pokemon__info__counter-wrapper {
+    display: flex;
+    width: 50px;
+}
+
+.hunted-pokemon-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hunted-pokemon-buttons__btn {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    outline: none;
+
+    margin: 5px;
+
+    border: none;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    box-shadow: 0px 2px 5px #333;
+
+    cursor: pointer;
+}

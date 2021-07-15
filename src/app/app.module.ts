@@ -11,11 +11,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { PokemonComponent } from './components/pokemon/pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewHuntComponent
+    NewHuntComponent,
+    PokemonComponent
   ],
   imports: [
     BrowserModule, 

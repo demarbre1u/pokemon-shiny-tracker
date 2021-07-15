@@ -74,6 +74,7 @@ export class HuntService {
       img: huntData.huntPokemonImg,
       method: method,
       counter: counter, 
+      shinyProbability: '0',
 
       options: {
         masuda: huntData.huntMasuda,
@@ -81,6 +82,9 @@ export class HuntService {
         gen: huntData.huntGen
       }
     };
+
+    // Re-calculate the siny probability
+    newHunt.shinyProbability = this.calculateShinyProbability(newHunt).toFixed(2); 
 
     // Adds the new hunt to the list of hunts
     this.huntsList.push(newHunt);
@@ -111,8 +115,59 @@ export class HuntService {
   updateCurrentHunt(uid) {
     this.currentHunt = this.huntsList.filter(e => e.id === uid)[0];
 
+    // Re-calculate the siny probability
+    this.currentHunt['shinyProbability'] = this.calculateShinyProbability(this.currentHunt).toFixed(2); 
+
     this.saveHuntList();
     this.currentHuntChangedSource.next(this.currentHunt);
+  }
+
+  // Calculates the probability of encountering a shiny
+  calculateShinyProbability(currentHunt) {
+    const baseOdd = this.getBaseOdds(currentHunt.options.gen);
+
+    // No need to calculate if the counter is 0
+    if(! currentHunt || currentHunt.counter === 0) {
+      return 0;
+    }
+    
+    // Calculates the probability to have found 1 shiny
+    const p = this.getRollNumbers(currentHunt) / baseOdd;
+    const n = currentHunt.counter;
+    const probability = 1 - Math.pow(1 - p, n);
+
+    // Transforms the probability to a percentage
+    return probability * 100;
+  }
+
+  // Returns the base odd to find a shiny, depending on the selected generation
+  getBaseOdds(generation) {
+    let baseOdd = 8192;
+    switch(generation) {
+      case '1':
+        baseOdd = 8192;
+        break;
+      case '2':
+        baseOdd = 4096;
+        break;
+    }
+
+    return baseOdd;
+  }
+
+  // Returns the number of shiny rolls depending on the selected options
+  getRollNumbers(currentHunt) {
+    let rollNumbers = 1;
+
+    if(currentHunt.options.masuda) {
+      rollNumbers += 5;
+    }
+
+    if(currentHunt.options.charm) {
+      rollNumbers += 2;
+    }
+
+    return rollNumbers;
   }
 
   // Increments the counter of the current hunt
