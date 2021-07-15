@@ -20,7 +20,7 @@ It keeps track of :
 
 Additionnaly, it can work out the probability to have found 1 shiny based on the previous data.
 
-This app was made using Angular 7, and Cordova. It can be ran used on a browser and on an Android phone. 
+This app was made using Angular 7, and Cordova. It can be used both on a browser and on an Android phone. 
 
 The APK of the app (version `1.0.0`) is available [here](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v1.0.0.apk).
 
