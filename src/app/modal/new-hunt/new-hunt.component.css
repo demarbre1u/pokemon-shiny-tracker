@@ -19,6 +19,15 @@
     flex-direction: column;
 }
 
+.modal-body__numbers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-body__numbers mat-form-field {
+    width: 47%;
+}
+
 .modal-footer {
     border: none;
     display: flex;

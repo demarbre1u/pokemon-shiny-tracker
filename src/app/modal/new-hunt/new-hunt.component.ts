@@ -25,7 +25,8 @@ export class NewHuntComponent extends SimpleModalComponent<NewHuntModel, boolean
     huntMethod: new FormControl('', Validators.required),
     huntMasuda: new FormControl({value: '', disabled: true}),
     huntShinyCharm: new FormControl(''),
-    huntCounter: new FormControl('')
+    huntCounter: new FormControl(''),
+    huntIncrement: new FormControl('')
   });
 
   // FormControl of the Pokémon select

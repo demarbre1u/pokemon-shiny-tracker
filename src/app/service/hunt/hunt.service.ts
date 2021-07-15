@@ -76,6 +76,7 @@ export class HuntService {
 
     // Sets the starting value of the counter
     const counter = huntData.huntCounter ? Number.parseInt(huntData.huntCounter) : 0;
+    const increment = huntData.huntIncrement ? Number.parseInt(huntData.huntIncrement) : 1;
 
     const newHunt = {
       id: uid,
@@ -83,6 +84,7 @@ export class HuntService {
       img: huntData.huntPokemonImg,
       method: method,
       counter: counter, 
+      increment: increment, 
       shinyProbability: '0',
 
       options: {
@@ -183,7 +185,7 @@ export class HuntService {
   incrementHuntCounter(uid) {
     this.huntsList.map(e => {
       if(e.id === uid) {
-        e.counter++;
+        e.counter += e.increment;
       }
     });
 
@@ -194,8 +196,12 @@ export class HuntService {
   decrementHuntCounter(uid) {
     this.huntsList.map(e => {
       if(e.id === uid) {
-        // The counter can't go bellow 0
-        e.counter = e.counter === 0 ? 0 : e.counter - 1;
+        e.counter -= e.increment;
+
+        // The counter can't go bellow 0        
+        if(e.counter < 0) {
+          e.counter = 0;
+        }
       }
     });
 
