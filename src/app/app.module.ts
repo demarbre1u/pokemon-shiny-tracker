@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSidenavModule } from '@angular/material/sidenav'; 
@@ -28,7 +29,8 @@ import { PokemonComponent } from './components/pokemon/pokemon.component';
     NgxMatSelectSearchModule, 
     MatSidenavModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [],
   entryComponents: [

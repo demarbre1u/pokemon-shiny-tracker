@@ -19,6 +19,10 @@ export class PokemonComponent implements OnInit {
   @Input('currentHunt')
   currentHunt: any;
 
+  // Whether the hunt is finished or not
+  @Input('finished')
+  finished: boolean = false;
+
   constructor(private hunt: HuntService) { }
 
   ngOnInit() {}
@@ -46,4 +50,9 @@ export class PokemonComponent implements OnInit {
     const currentId = this.currentHunt.id;
     this.hunt.decrementHuntCounter(currentId);
   } 
+
+  foundShiny() {
+    const currentId = this.currentHunt.id;
+    this.hunt.foundShiny(currentId);
+  }
 }

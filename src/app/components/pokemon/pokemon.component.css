@@ -93,3 +93,14 @@
 
     cursor: pointer;
 }
+
+.hunted-pokemon-buttons__btn__shiny-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hunted-pokemon-buttons__btn__shiny-btn img {
+    width: 24px;
+    height: 24px;
+}

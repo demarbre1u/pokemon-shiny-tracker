@@ -7,7 +7,7 @@
         <span class="sidebar__title">Hunts</span>
 
         <div class="sidebar__hunt-list">
-          <div class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id)">
+          <div class="sidebar__hunt-item" [attr.data-uid]="hunt.id" *ngFor="let hunt of huntsList" (click)="setCurrentHunt(hunt.id); drawer.toggle(); tabs.selectedIndex = 0;">
             <span class="sidebar__hunt-pokemon">
               <img class="sidebar__hunt-img" src="assets/sprites/regular/{{ hunt.img }}" alt="Icon of a {{ hunt.name }}">
               <div class="sidebar__hunt-name">{{ hunt.name }}</div> 
@@ -26,18 +26,35 @@
 
     <mat-drawer-content>
 
-      <app-pokemon *ngIf="currentHunt" [currentHunt]="currentHunt"></app-pokemon>
+      <mat-tab-group #tabs mat-stretch-tabs class="mat-elevation-z4">
+        <mat-tab label="Ongoing hunt">
+
+          <div class="tab-wrapper">
+            <app-pokemon  *ngIf="currentHunt" [currentHunt]="currentHunt"></app-pokemon>
     
-      <h3 *ngIf="!currentHunt" class="hunted-pokemon-wrapper">
-        Create and select a hunt to start counting
-      </h3>
+            <h3 class="tab-wrapper__no-hunt" *ngIf="!currentHunt">
+              Create and select a hunt to start counting
+            </h3>
+          </div>
+
+        </mat-tab>
+
+        <mat-tab label="Finished hunts"> 
+          <div class="tab-wrapper finished-hunts">
+
+            <app-pokemon *ngFor="let finishedHunt of finishedHuntList" [currentHunt]="finishedHunt" [finished]="true"></app-pokemon>
+            
+            <h3 *ngIf="! finishedHuntList">
+              No finished hunts yet
+            </h3>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
 
       <button class="drawer-toggle-btn" (click)="drawer.toggle()">
         <span *ngIf="drawer.opened"><</span>
         <span *ngIf="!drawer.opened">></span>
       </button>
-
     </mat-drawer-content>
   </mat-drawer-container>
-
 </div>

@@ -14,6 +14,8 @@ export class AppComponent {
 
   // The list of hunts of the user
   huntsList = [];
+  // The list of finished hunts
+  finishedHuntList = [];
   // The current hunt selected by the user
   currentHunt: any = null;
 
@@ -26,6 +28,10 @@ export class AppComponent {
     // Updates the current hunt whenever is is updated
     this.hunt.currentHuntChanged$.subscribe(hunt => {
       this.currentHunt = hunt;
+    });
+
+    this.hunt.finishedHuntsChanged$.subscribe(hunts => {
+      this.finishedHuntList = hunts;
     });
 
     // Loads the list of hunts

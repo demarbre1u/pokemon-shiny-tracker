@@ -26,6 +26,12 @@ export class HuntService {
   private huntsChangedSource = new Subject<any>();
   huntsChanged$ = this.huntsChangedSource.asObservable();
 
+  // List of finished hunts
+  private finishedHuntList = [];
+  // Subject / Observer to notify the components of the app when list of finished hunts has changed
+  private finishedHuntsChangedSource = new Subject<any>();
+  finishedHuntsChanged$ = this.finishedHuntsChangedSource.asObservable();
+
   // The current list selected by the user
   private currentHunt = {};
   // Subject / Observer to notify the components of the app when the current hunt has changed
@@ -38,6 +44,9 @@ export class HuntService {
   loadHuntList() {
     this.huntsList = this.getHuntList();
     this.saveHuntList();
+
+    this.finishedHuntList = this.getFinishedHuntList();
+    this.saveFinishedHuntList();
   }
 
   // Adds a new hunt to the hunt list
@@ -204,6 +213,26 @@ export class HuntService {
     this.updateCurrentHunt(uid);
   }
 
+  foundShiny(uid) {
+    const finishedHunt = this.huntsList.filter(hunt => hunt.id === uid)[0];
+    const remainingHunts = this.huntsList.filter(hunt => hunt.id !== uid);
+
+    this.finishedHuntList.push(finishedHunt);
+    this.huntsList = remainingHunts;
+
+    if(this.currentHunt['id'] === uid) {
+      this.currentHunt = null;
+
+      this.currentHuntChangedSource.next(this.currentHunt);
+    }
+
+    this.saveHuntList();
+    this.huntsChangedSource.next(this.huntsList);
+
+    this.saveFinishedHuntList();
+    this.finishedHuntsChangedSource.next(this.finishedHuntList);
+  }
+
   // Saves the hunt list into the browser's local storage
   saveHuntList() {
     localStorage.setItem('huntsList', JSON.stringify(this.huntsList));
@@ -215,5 +244,18 @@ export class HuntService {
     const huntList = JSON.parse(localStorage.getItem('huntsList'));
 
     return huntList ? huntList : [];
+  }
+
+  // Saves the hunt list into the browser's local storage
+  saveFinishedHuntList() {
+    localStorage.setItem('finishedHuntsList', JSON.stringify(this.finishedHuntList));
+    this.finishedHuntsChangedSource.next(this.finishedHuntList);
+  }
+
+  // Gets the finished hunt list from the browser's local storage 
+  getFinishedHuntList() {
+    const finishedHuntList = JSON.parse(localStorage.getItem('finishedHuntsList'));
+
+    return finishedHuntList ? finishedHuntList : [];
   }
 }
