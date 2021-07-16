@@ -30,6 +30,11 @@ export class PokemonComponent implements OnInit {
   // Listens to Keyboard events to increment / decrement counter if either the '+' or '-' key are pressed
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
+    // If the hunt is finished, no need to listen to those events
+    if(this.finished) {
+      return;
+    }
+
     if (event.keyCode === KEY_CODE.PLUS_SIGN_1 || event.keyCode === KEY_CODE.PLUS_SIGN_2) {
       this.incrementCounter();
     }

@@ -4,7 +4,8 @@
   </button>
   
   <div class="hunted-pokemon">
-    <img src="assets/sprites/regular/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
+    <img *ngIf="! finished" src="assets/sprites/regular/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
+    <img *ngIf="finished" src="assets/sprites/shiny/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
 
     <div class="hunted-pokemon__info">
       <span class="hunted-pokemon__info__name">
