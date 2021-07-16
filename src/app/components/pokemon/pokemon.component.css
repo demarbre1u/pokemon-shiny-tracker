@@ -94,6 +94,15 @@
     cursor: pointer;
 }
 
+.hunted-pokemon-buttons__btn__trash-btn {
+    margin-left: 8px;
+}
+
+.hunted-pokemon-buttons__btn__trash-btn img {
+    width: 18px;
+    height: 18px;
+}
+
 .hunted-pokemon-buttons__btn__shiny-btn {
     display: flex;
     justify-content: center;

@@ -51,8 +51,15 @@ export class PokemonComponent implements OnInit {
     this.hunt.decrementHuntCounter(currentId);
   } 
 
+  // Moves the current hunt to the finished hunts list
   foundShiny() {
     const currentId = this.currentHunt.id;
     this.hunt.foundShiny(currentId);
+  }
+
+  // Deletes a finished hunt from the finished hunts list
+  deleteFinishedHunt() {
+    const currentId = this.currentHunt.id;
+    this.hunt.deleteFinishedHunt(currentId);
   }
 }

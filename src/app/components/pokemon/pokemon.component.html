@@ -28,4 +28,10 @@
     <button class="hunted-pokemon-buttons__btn" (click)="incrementCounter()">+</button>
     <button class="hunted-pokemon-buttons__btn" (click)="decrementCounter()">-</button>  
   </div>
+
+  <div *ngIf="finished" class="hunted-pokemon-buttons">
+    <button class="hunted-pokemon-buttons__btn hunted-pokemon-buttons__btn__trash-btn" (click)="deleteFinishedHunt()">
+      <img src="assets/icons/trash-white.svg" alt="Trash icon">
+    </button>
+  </div>
 </div>

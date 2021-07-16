@@ -104,7 +104,7 @@ export class HuntService {
 
   // Deletes a hunt from the hunt list
   deleteHunt(uid) {
-    this.huntsList = this.huntsList.filter(e => e.id !== uid);
+    this.huntsList = this.huntsList.filter(hunt => hunt.id !== uid);
     this.saveHuntList();
 
     // If the deleted hunt is the current one, we set the current one to null to avoid any issue
@@ -112,6 +112,12 @@ export class HuntService {
       this.currentHunt = null;
       this.currentHuntChangedSource.next(this.currentHunt);
     }
+  }
+
+  // Deletes a hunt from the finished hunt list
+  deleteFinishedHunt(uid) {
+    this.finishedHuntList = this.finishedHuntList.filter(hunt => hunt.id !== uid);
+    this.saveFinishedHuntList();
   }
 
   // Sets the current hunt, selected by the player
