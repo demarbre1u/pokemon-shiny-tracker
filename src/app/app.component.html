@@ -42,9 +42,15 @@
         <mat-tab label="Finished hunts"> 
           <div class="tab-wrapper finished-hunts">
 
-            <app-pokemon *ngFor="let finishedHunt of finishedHuntList" [currentHunt]="finishedHunt" [finished]="true"></app-pokemon>
+            <mat-form-field class="finished-hunts__search-bar">
+              <mat-label>Search</mat-label>
+              <input #searchBar matInput name="searchBar" placeholder="Search..." (keyup)="filterFinisehedHunts(searchBar.value)">
+            </mat-form-field> 
+
+
+            <app-pokemon *ngFor="let finishedHunt of filteredFinishedHuntList" [currentHunt]="finishedHunt" [finished]="true"></app-pokemon>
             
-            <h3 *ngIf="! finishedHuntList">
+            <h3 *ngIf="finishedHuntList.length === 0">
               No finished hunts yet
             </h3>
           </div>

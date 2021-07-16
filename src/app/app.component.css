@@ -187,3 +187,11 @@ mat-tab-group {
 .finished-hunts app-pokemon:last-of-type {
     margin-bottom: 15px;
 }
+
+.finished-hunts__search-bar {
+    padding: 2px 30px;
+    margin: 15px 15px 5px 15px;
+    background-color: white;
+    box-shadow: 1px 1px 4px #333;
+    border-radius: 35px;
+}

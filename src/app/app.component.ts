@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { NewHuntComponent } from './modal/new-hunt/new-hunt.component';
 import { HuntService } from './service/hunt/hunt.service';
@@ -12,10 +12,16 @@ export class AppComponent {
   // The title of the app
   title = 'pokemon-shiny-tracker';
 
+  // Binds to the searchBar element in the HTML
+  @ViewChild('searchBar')
+  searchBar: ElementRef;
+
   // The list of hunts of the user
   huntsList = [];
   // The list of finished hunts
   finishedHuntList = [];
+  // The list of filtered finished hunts
+  filteredFinishedHuntList = [];
   // The current hunt selected by the user
   currentHunt: any = null;
 
@@ -32,10 +38,19 @@ export class AppComponent {
 
     this.hunt.finishedHuntsChanged$.subscribe(hunts => {
       this.finishedHuntList = hunts;
+
+      // Whenever the finished hunts list is updated, update the filtered list as well 
+      if(this.searchBar) {
+        this.filterFinisehedHunts(this.searchBar.nativeElement.value);
+      } else {
+        this.filterFinisehedHunts('');
+      }
     });
 
     // Loads the list of hunts
     this.hunt.loadHuntList();
+
+    this.filteredFinishedHuntList = this.finishedHuntList;
   }
 
   // Sets the current hunt selected by the player
@@ -46,6 +61,26 @@ export class AppComponent {
   // Deletes a hunt from the hunts list
   deleteHunt(uid) {
     this.hunt.deleteHunt(uid);
+  }
+
+  // Filter the list of finished hunts containing a search term
+  filterFinisehedHunts(searchTerm) {
+    const lcSearchTerm = searchTerm.toLowerCase();
+    
+    let result;
+    switch(lcSearchTerm) {
+      case '*masuda':
+        result = this.finishedHuntList.filter(hunt => hunt.options.masuda);
+        break;
+      case '*charm':
+        result = this.finishedHuntList.filter(hunt => hunt.options.charm);
+        break;
+      default:
+        result = this.finishedHuntList.filter(hunt => hunt.name.toLowerCase().includes(lcSearchTerm));
+        break;
+    }
+
+    this.filteredFinishedHuntList = result;
   }
 
   // Shows a modal to create a new hunt
