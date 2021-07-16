@@ -3,10 +3,10 @@
 ## Introduction
 
 <p align="center">
-  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_01.png?raw=true" width="200" title="Screen 1" alt="Screen 1">
-  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_02.png?raw=true" width="200" title="Screen 2" alt="Screen 2">
-  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_03.png?raw=true" width="200" title="Screen 3" alt="Screen 3">
-  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/screen_04.png?raw=true" width="200" title="Screen 4" alt="Screen 4">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/screenshots/screen_01.png?raw=true" width="200" title="Screen 1" alt="Screen 1">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/screenshots/screen_02.png?raw=true" width="200" title="Screen 2" alt="Screen 2">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/screenshots/screen_03.png?raw=true" width="200" title="Screen 3" alt="Screen 3">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/screenshots/screen_04.png?raw=true" width="200" title="Screen 4" alt="Screen 4">
 </p>
 
 The <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true" width="16" title="Shiny charm icon" alt="Shiny charm icon">`Pokémon Shiny Tracker` project is a webapp meant to track the number of encouters you did while shiny hunting.
@@ -32,7 +32,7 @@ On the second tab, "Finished hunt", the list of your past, finished hunt is disp
 Here is an explanation of the data displayed for a hunt :
 
 <p align="center">
-  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/screenshots/pokemon_display.png?raw=true" width="400" title="Pokémon display" alt="Pokémon display">
+  <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/screenshots/pokemon_display.png?raw=true" width="400" title="Pokémon display" alt="Pokémon display">
 </p>
 
 There is an image of the hunted Pokémon to the left.
@@ -53,8 +53,8 @@ Each major version of the app has its own branch.
 
 The different versions of the APK can be downloaded here : 
 
- - [`v1.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v1.0.0.apk)
- - [`v2.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v2.0.0.apk)
+ - [`v1.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/apk/pokemon-shiny-tracker_v1.0.0.apk)
+ - [`v2.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/version_2.0.0/apk/pokemon-shiny-tracker_v2.0.0.apk)
 
 ## How to install & run
 
