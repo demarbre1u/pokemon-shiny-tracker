@@ -24,7 +24,7 @@ The first tab, "Ongoing hunt", displays your current hunt. On this tab, you can 
 
 On the second tab, "Finished hunt", the list of your past, finished hunt is displayed. On this tab, you can : 
 
- - Filter the hunts displayed with a search bar. Valid filters are Pokémon name, or part of their name. You can also use the following special filters : 
+ - Filter the hunts displayed using a search bar. Valid filters are Pokémon names, or part of their name. You can also use the following special filters : 
    - `*masuda` : will filter the hunts where the option "Masuda method" was selected,
    - `*charm`: will filter the hunts where the option "Shiny Charm" was selected.
  - Delete a finished hunt.
