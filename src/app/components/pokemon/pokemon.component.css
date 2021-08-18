@@ -1,4 +1,11 @@
-.hunted-pokemon-wrapper {
+.hunted-pokemon-wrapper__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hunted-pokemon-wrapper__column {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -7,7 +14,7 @@
 
 .hunted-pokemon {
     width: 275px;
-
+    margin: 5px;
     border-radius: 40px;
 
     display: flex;
@@ -72,7 +79,7 @@
 
 .hunted-pokemon-buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
@@ -92,6 +99,12 @@
     box-shadow: 0px 2px 5px #333;
 
     cursor: pointer;
+}
+
+.hunted-pokemon-buttons__btn__increment {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
 }
 
 .hunted-pokemon-buttons__btn__trash-btn {

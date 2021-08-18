@@ -1,8 +1,10 @@
-<div class="hunted-pokemon-wrapper">
+<div [class.hunted-pokemon-wrapper__row]="!finished" [class.hunted-pokemon-wrapper__column]="finished">  
+
   <button *ngIf="! finished" class="hunted-pokemon-buttons__btn hunted-pokemon-buttons__btn__shiny-btn" (click)="foundShiny()">
     <img src="assets/icons/shining.svg" alt="Shining icon">
   </button>
-  
+
+
   <div class="hunted-pokemon">
     <img *ngIf="! finished" src="assets/sprites/regular/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
     <img *ngIf="finished" src="assets/sprites/shiny/{{ currentHunt.img }}" class="hunted-pokemon__img" alt= "Icon of a {{ currentHunt.name }}"/>
@@ -25,14 +27,14 @@
     </div>
   </div>
 
-  <div *ngIf="! finished" class="hunted-pokemon-buttons">
-    <button class="hunted-pokemon-buttons__btn" (click)="incrementCounter()">+</button>
-    <button class="hunted-pokemon-buttons__btn" (click)="decrementCounter()">-</button>  
-  </div>
-
   <div *ngIf="finished" class="hunted-pokemon-buttons">
     <button class="hunted-pokemon-buttons__btn hunted-pokemon-buttons__btn__trash-btn" (click)="deleteFinishedHunt()">
       <img src="assets/icons/trash-white.svg" alt="Trash icon">
     </button>
+  </div>
+
+  <div *ngIf="! finished" class="hunted-pokemon-buttons">
+    <button class="hunted-pokemon-buttons__btn hunted-pokemon-buttons__btn__increment" (click)="decrementCounter()">-</button>  
+    <button class="hunted-pokemon-buttons__btn hunted-pokemon-buttons__btn__increment" (click)="incrementCounter()">+</button>
   </div>
 </div>
