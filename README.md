@@ -55,6 +55,7 @@ The different versions of the APK can be downloaded here :
 
  - [`v1.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v1.0.0.apk)
  - [`v2.0.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v2.0.0.apk)
+ - [`v2.1.0`](https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/apk/pokemon-shiny-tracker_v2.1.0.apk)
 
 ## How to install & run
 
