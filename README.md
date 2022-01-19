@@ -11,6 +11,8 @@
 
 The <img src="https://github.com/demarbre1u/pokemon-shiny-tracker/blob/master/src/assets/icons/shiny-charm.png?raw=true" width="16" title="Shiny charm icon" alt="Shiny charm icon">`Pokémon Shiny Tracker` project is a webapp meant to track the number of encouters you did while shiny hunting.
 
+The app is accessible here: https://pokemon-shiny-tracker.herokuapp.com
+
 The sidebar menu allows you to create and manage your ongoing hunts. You can : 
 
  - Create a new hunt, 
