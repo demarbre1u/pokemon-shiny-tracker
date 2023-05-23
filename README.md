@@ -42,9 +42,9 @@ There is an image of the hunted Pokémon to the left.
 To the right of the image, from top to bottom : 
 
  - The name of the Pokémon,
- - To the right of the Pokémon name, charms icons depending on the selected option (pink for Masuda Method, blue for Shiny Charm), 
- - Bellow the Pokémon name, a progress bar representing the probability to have found 1 shiny so far, considering the number of encouters made, 
- - Bellow the progress bar, The number of encounters, followed by the type of encounter.
+ - To the right of the Pokémon name, charm icons depending on the selected options (pink for Masuda Method, blue for Shiny Charm), 
+ - Below the Pokémon name, a progress bar representing the probability to have found 1 shiny so far, considering the number of encouters made, 
+ - Below the progress bar, The number of encounters, followed by the type of encounter.
 
 
 This app was made using Angular 7, and Cordova. It can be used both on a browser and on an Android phone. 
